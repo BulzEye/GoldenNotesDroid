@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">GoldenNotesDroid</string>
+    <string name="app_name">GoldenNotes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sample_title_1">First Note</string>
+    <string name="sample_note_1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque earum eveniet harum quas, recusandae illum dolorum natus fugit ipsa illo, quasi tenetur, amet soluta voluptatum?</string>
+    <string name="sample_title_2">Second</string>
+    <string name="sample_note_2">boo</string>
 </resources>
