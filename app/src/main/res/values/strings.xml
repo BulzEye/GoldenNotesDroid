@@ -6,4 +6,8 @@
     <string name="sample_note_1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque earum eveniet harum quas, recusandae illum dolorum natus fugit ipsa illo, quasi tenetur, amet soluta voluptatum?</string>
     <string name="sample_title_2">Second</string>
     <string name="sample_note_2">boo</string>
+    <string name="edit_title_hint">Enter title</string>
+    <string name="edit_body_hint">Enter a note...</string>
+    <string name="submit_button_label">Submit</string>
+    <string name="delete_button_label">Delete</string>
 </resources>
