@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.example.goldennotesdroid.NotesFragment"
-        android:label="fragment_notes"
-        tools:layout="@layout/fragment_notes" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_notes">
         <action
             android:id="@+id/action_notesFragment_to_editNoteFragment"
             app:destination="@id/editNoteFragment" />
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/editNoteFragment"
         android:name="com.example.goldennotesdroid.EditNoteFragment"
-        android:label="EditNoteFragment" >
+        android:label="@string/edit_note_fragment_label">
         <argument
             android:name="noteTitle"
             app:argType="string" />
