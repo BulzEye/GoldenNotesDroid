@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goldennotesdroid.adapter.NotesAdapter
@@ -33,10 +34,10 @@ class NotesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setHasOptionsMenu(true)
-        arguments?.let {
+//        arguments?.let {
 //            param1 = it.getString(ARG_PARAM1)
 //            param2 = it.getString(ARG_PARAM2)
-        }
+//        }
     }
 
     override fun onCreateView(
@@ -44,13 +45,14 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentNotesBinding.inflate(inflater, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notes, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val notesDataset = DataSource().loadNotes()
         recyclerView = binding.recyclerView
+//        recyclerView.adapter = NotesAdapter(requireContext(), notesDataset)
         recyclerView.adapter = NotesAdapter(requireContext(), notesDataset)
 
         // Use this setting to improve performance if you know that changes
