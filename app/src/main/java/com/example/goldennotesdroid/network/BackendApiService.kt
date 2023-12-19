@@ -1,5 +1,6 @@
 package com.example.goldennotesdroid.network
 
+import com.example.goldennotesdroid.model.ModifyNoteBody
 import com.example.goldennotesdroid.model.Note
 import com.example.goldennotesdroid.model.NotesResponse
 import com.squareup.moshi.Moshi
@@ -7,8 +8,10 @@ import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.POST
 import java.util.Date
 
 private val moshi = Moshi.Builder()
@@ -27,6 +30,10 @@ interface BackendApiService {
     @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcwMjgxMTU1OCwiZXhwIjoxNzA1NDAzNTU4fQ.4Xdq9ycl4G0DxmkxYj1Pmf1MccduAOAqzrFU-CbliIg")
     @GET("getNotes")
     suspend fun getNotes(): NotesResponse
+
+    @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcwMjgxMTU1OCwiZXhwIjoxNzA1NDAzNTU4fQ.4Xdq9ycl4G0DxmkxYj1Pmf1MccduAOAqzrFU-CbliIg")
+    @POST("modifynote")
+    suspend fun modifyNote(@Body reqBody: ModifyNoteBody): Note
 }
 
 object GoldenBackend {

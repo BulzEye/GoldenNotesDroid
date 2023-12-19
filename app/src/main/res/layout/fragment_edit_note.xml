@@ -22,6 +22,7 @@
             android:hint="@string/edit_title_hint"
             android:padding="16dp"
             android:text="@{viewModel.title}"
+            android:afterTextChanged="@{viewModel::updateTitle}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:autofillHints="title" />
@@ -37,6 +38,7 @@
             android:lines="3"
             android:gravity="start|top"
             android:text="@{viewModel.body}"
+            android:afterTextChanged="@{viewModel::updateBody}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_title"
             android:autofillHints="body" />

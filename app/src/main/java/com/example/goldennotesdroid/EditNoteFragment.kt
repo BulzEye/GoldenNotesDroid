@@ -35,6 +35,11 @@ class EditNoteFragment : Fragment() {
         _binding = FragmentEditNoteBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        binding.submitNoteButton.setOnClickListener {
+            viewModel.submitData(requireContext())
+        }
+
         // Inflate the layout for this fragment
         return binding.root
     }
