@@ -2,6 +2,7 @@ package com.example.goldennotesdroid.adapter
 
 import android.content.Context
 import android.service.autofill.Dataset
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,8 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallbac
         }
         fun setClickListener(curNote: Note) {
             binding.noteContainer.setOnClickListener{
-                val action = NotesFragmentDirections.actionNotesFragmentToEditNoteFragment(curNote.body, curNote.title)
+//                Log.d("GoldenNotesArguments", curNote.title)
+                val action = NotesFragmentDirections.actionNotesFragmentToEditNoteFragment(curNote.title, curNote._id, curNote.body)
                 binding.root.findNavController().navigate(action)
 //                holder.view.findNavController().navigate(action)
             }
