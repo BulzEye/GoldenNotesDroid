@@ -46,8 +46,9 @@ class NotesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notes, container, false)
-//        binding.recyclerView.adapter = NotesAdapter()
-//        binding.recyclerView.setHasFixedSize(true)
+        binding.lifecycleOwner = this
+        binding.recyclerView.adapter = NotesAdapter()
+        binding.recyclerView.setHasFixedSize(true)
         binding.viewModel = viewModel
         return binding.root
     }

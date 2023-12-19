@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -13,8 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -22,27 +22,32 @@
 
             <TextView
                 android:id="@+id/notes_item_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{note.title}"
-                tools:text="Note Title"
                 android:padding="16dp"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
+                android:text="@{note.title}"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/notes_item_body"
+                tools:text="Note Title" />
 
             <TextView
                 android:id="@+id/notes_item_body"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:paddingStart="16dp"
                 android:paddingTop="0dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
-                android:textAppearance="?textAppearanceBody1"
                 android:text="@{note.body}"
+                android:textAppearance="?textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notes_item_title"
                 tools:text="Note Body" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 </layout>

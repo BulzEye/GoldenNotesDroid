@@ -40,14 +40,14 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallbac
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
 //        val adapterLayout = LayoutInflater.from(parent.context)
 //            .inflate(R.layout.note_list_item, parent, false)
-        return NotesViewHolder(NoteListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return NotesViewHolder(NoteListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
 //        val dataset = DataSource().loadNotes()
-//        val item = dataset[position]
-//        holder.bind(item)
-//        holder.setClickListener(item)
+        val item = getItem(position)
+        holder.bind(item)
+        holder.setClickListener(item)
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Note>() {

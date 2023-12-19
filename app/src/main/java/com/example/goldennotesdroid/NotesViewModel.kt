@@ -23,7 +23,7 @@ class NotesViewModel : ViewModel() {
             try {
                 val response: NotesResponse = GoldenBackend.retrofitService.getNotes()
                 _notesList.value = response.notes
-                Log.d("GoldenNotes", "Notes: ${_notesList.value}")
+                Log.d("GoldenNotes", "Notes: ${notesList.value?.map{"#" + it.body + "#"}}")
             }
             catch (e: Exception) {
                 Log.e("GoldenNotes", "Error: Could not fetch notes. Error: ${e}")
