@@ -46,18 +46,22 @@ class NotesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_notes, container, false)
+//        binding.recyclerView.adapter = NotesAdapter()
+//        binding.recyclerView.setHasFixedSize(true)
+        binding.viewModel = viewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val notesDataset = DataSource().loadNotes()
-        recyclerView = binding.recyclerView
+//        val notesDataset = DataSource().loadNotes()
+//        recyclerView = binding.recyclerView
 //        recyclerView.adapter = NotesAdapter(requireContext(), notesDataset)
-        recyclerView.adapter = NotesAdapter(requireContext(), notesDataset)
+//        recyclerView.adapter = NotesAdapter()
+
 
         // Use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true)
+//        recyclerView
     }
 
     override fun onDestroyView() {

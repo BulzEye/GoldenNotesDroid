@@ -17,44 +17,46 @@ import com.example.goldennotesdroid.databinding.NoteListItemBinding
 import com.example.goldennotesdroid.model.Note
 import com.google.android.material.card.MaterialCardView
 
-class NotesAdapter(
-    private var binding: NoteListItemBinding
-) : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallback) {
-    class NotesViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+class NotesAdapter : ListAdapter<Note, NotesAdapter.NotesViewHolder>(DiffCallback) {
+    class NotesViewHolder(
+        private var binding: NoteListItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 //        val noteContainer: MaterialCardView = view.findViewById(R.id.note_container)
 //        val titleTextView: TextView = view.findViewById(R.id.notes_item_title)
 //        val bodyTextView: TextView = view.findViewById(R.id.notes_item_body)
         fun bind(curNote: Note) {
-            binding.text
+            binding.note = curNote
+            binding.executePendingBindings()
+        }
+        fun setClickListener(curNote: Note) {
+            binding.noteContainer.setOnClickListener{
+                val action = NotesFragmentDirections.actionNotesFragmentToEditNoteFragment(curNote.body, curNote.title)
+                binding.root.findNavController().navigate(action)
+//                holder.view.findNavController().navigate(action)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.note_list_item, parent, false)
-        return NotesViewHolder(adapterLayout)
+//        val adapterLayout = LayoutInflater.from(parent.context)
+//            .inflate(R.layout.note_list_item, parent, false)
+        return NotesViewHolder(NoteListItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        val dataset = DataSource().loadNotes()
-        val item = dataset[position]
-        val titleText = context.resources.getString(item.titleResourceId)
-        val bodyText = context.resources.getString(item.bodyResourceId)
-        holder.titleTextView.text = titleText
-        holder.bodyTextView.text = bodyText
-        holder.noteContainer.setOnClickListener{
-            val action = NotesFragmentDirections.actionNotesFragmentToEditNoteFragment(titleText, bodyText)
-            holder.view.findNavController().navigate(action)
-        }
+//        val dataset = DataSource().loadNotes()
+//        val item = dataset[position]
+//        holder.bind(item)
+//        holder.setClickListener(item)
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Note>() {
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
-            return
+            return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
-            TODO("Not yet implemented")
+            return oldItem.title == newItem.title && oldItem.body == newItem.body
         }
 
     }

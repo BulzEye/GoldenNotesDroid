@@ -9,10 +9,8 @@ data class Note(
     val _id: String,
     val user: String,
     val title: String,
-    val body: String?,
+    val body: String = "",
     val createdAt: Date,
     val updatedAt: Date,
     val __v: Int
-) {
-
-}
+)

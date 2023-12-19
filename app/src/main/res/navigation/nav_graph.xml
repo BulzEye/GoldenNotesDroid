@@ -23,6 +23,8 @@
             app:argType="string" />
         <argument
             android:name="noteBody"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

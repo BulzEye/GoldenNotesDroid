@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="note"
+            type="com.example.goldennotesdroid.model.Note" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -22,7 +24,8 @@
                 android:id="@+id/notes_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Notes Item"
+                android:text="@{note.title}"
+                tools:text="Note Title"
                 android:padding="16dp"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
@@ -36,7 +39,8 @@
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
                 android:textAppearance="?textAppearanceBody1"
-                tools:text="TextView" />
+                android:text="@{note.body}"
+                tools:text="Note Body" />
 
         </LinearLayout>
 
