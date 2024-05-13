@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.goldennotesdroid.databinding.FragmentEditNoteBinding
 
 
@@ -38,6 +39,11 @@ class EditNoteFragment : Fragment() {
 
         binding.submitNoteButton.setOnClickListener {
             viewModel.submitData(requireContext())
+            viewModel.submitStatus.observe(viewLifecycleOwner) {
+                if(it == EditNoteApiStatus.SUCCESS) {
+                    findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
+                }
+            }
         }
 
         // Inflate the layout for this fragment

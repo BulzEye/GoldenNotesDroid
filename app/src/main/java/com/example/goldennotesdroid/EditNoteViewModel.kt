@@ -15,6 +15,8 @@ import com.example.goldennotesdroid.model.NoteInfo
 import com.example.goldennotesdroid.network.GoldenBackend
 import kotlinx.coroutines.launch
 
+enum class EditNoteApiStatus { NONE, ERROR, SUCCESS }
+
 class EditNoteViewModel : ViewModel() {
     private var __id = MutableLiveData<String>()
     val _id: LiveData<String> = __id
@@ -24,6 +26,9 @@ class EditNoteViewModel : ViewModel() {
 
     private var _body = MutableLiveData<String>()
     val body: LiveData<String> = _body
+
+    private var _submitStatus = MutableLiveData<EditNoteApiStatus>()
+    val submitStatus: LiveData<EditNoteApiStatus> = _submitStatus
 
     fun getArgumentsAndSetData(arguments: Bundle) {
 //        Log.d("GNViewModel", arguments.getString("noteBody").toString())
@@ -50,10 +55,13 @@ class EditNoteViewModel : ViewModel() {
                 val reqBody = ModifyNoteBody(it, NoteInfo(title.value?:"", body.value?:""))
                 try {
                     val response = GoldenBackend.retrofitService.modifyNote(reqBody)
+                    _submitStatus.value = EditNoteApiStatus.SUCCESS
                     val toast = Toast.makeText(context, "Note successfully updated", Toast.LENGTH_LONG)
                     toast.show()
+                    return@launch
                 }
                 catch (e: Exception) {
+                    _submitStatus.value = EditNoteApiStatus.ERROR
                     Log.e("GoldenNotes", "Could not update note: $e")
                 }
             }

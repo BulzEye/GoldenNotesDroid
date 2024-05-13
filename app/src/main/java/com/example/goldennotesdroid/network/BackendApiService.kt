@@ -27,11 +27,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface BackendApiService {
-    @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcwMjgxMTU1OCwiZXhwIjoxNzA1NDAzNTU4fQ.4Xdq9ycl4G0DxmkxYj1Pmf1MccduAOAqzrFU-CbliIg")
+    @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcxMzczMDA5MSwiZXhwIjoxNzE2MzIyMDkxfQ.Jod93Qc-FJJK283BImYXAkLIkR3vT2cktJj5bU62b9Y")
     @GET("getNotes")
     suspend fun getNotes(): NotesResponse
 
-    @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcwMjgxMTU1OCwiZXhwIjoxNzA1NDAzNTU4fQ.4Xdq9ycl4G0DxmkxYj1Pmf1MccduAOAqzrFU-CbliIg")
+    @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcxMzczMDA5MSwiZXhwIjoxNzE2MzIyMDkxfQ.Jod93Qc-FJJK283BImYXAkLIkR3vT2cktJj5bU62b9Y")
     @POST("modifynote")
     suspend fun modifyNote(@Body reqBody: ModifyNoteBody): Note
 }
