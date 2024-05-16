@@ -30,17 +30,17 @@
         <EditText
             android:id="@+id/edit_body"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:inputType="textMultiLine"
             android:hint="@string/edit_body_hint"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:lines="3"
             android:gravity="start|top"
             android:text="@{viewModel.body}"
             android:afterTextChanged="@{viewModel::updateBody}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_title"
+            app:layout_constraintBottom_toTopOf="@id/delete_note_button"
             android:autofillHints="body" />
 
         <Button
