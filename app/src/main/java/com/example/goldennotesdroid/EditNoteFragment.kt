@@ -47,6 +47,15 @@ class EditNoteFragment : Fragment() {
                 }
             }
         }
+        binding.deleteNoteButton.setOnClickListener {
+            Log.i("GoldenNotes", "Delete button clicked")
+            viewModel.deleteNote(requireContext())
+            viewModel.submitStatus.observe(viewLifecycleOwner) {
+                if(it == EditNoteApiStatus.SUCCESS) {
+                    findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
+                }
+            }
+        }
 
         // Inflate the layout for this fragment
         return binding.root

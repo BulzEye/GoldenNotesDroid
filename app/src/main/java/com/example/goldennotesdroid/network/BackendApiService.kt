@@ -10,9 +10,11 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Path
 import java.util.Date
 
 private val moshi = Moshi.Builder()
@@ -39,6 +41,10 @@ interface BackendApiService {
     @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcxMzczMDA5MSwiZXhwIjoxNzE2MzIyMDkxfQ.Jod93Qc-FJJK283BImYXAkLIkR3vT2cktJj5bU62b9Y")
     @POST("addnote")
     suspend fun addNote(@Body reqBody: NoteInfo): Note
+
+    @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcxMzczMDA5MSwiZXhwIjoxNzE2MzIyMDkxfQ.Jod93Qc-FJJK283BImYXAkLIkR3vT2cktJj5bU62b9Y")
+    @DELETE("deletenote/{id}")
+    suspend fun deleteNote(@Path("id") id: String): Note
 }
 
 object GoldenBackend {
