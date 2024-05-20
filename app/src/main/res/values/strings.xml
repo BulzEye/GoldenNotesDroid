@@ -11,4 +11,5 @@
     <string name="submit_button_label">Submit</string>
     <string name="delete_button_label">Delete</string>
     <string name="edit_note_fragment_label">Edit note</string>
+    <string name="new_note">New note</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.goldennotesdroid.network
 
 import com.example.goldennotesdroid.model.ModifyNoteBody
 import com.example.goldennotesdroid.model.Note
+import com.example.goldennotesdroid.model.NoteInfo
 import com.example.goldennotesdroid.model.NotesResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
@@ -34,6 +35,10 @@ interface BackendApiService {
     @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcxMzczMDA5MSwiZXhwIjoxNzE2MzIyMDkxfQ.Jod93Qc-FJJK283BImYXAkLIkR3vT2cktJj5bU62b9Y")
     @POST("modifynote")
     suspend fun modifyNote(@Body reqBody: ModifyNoteBody): Note
+
+    @Headers("Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2VkN2E2MGIzYjQwYTM2NGM0M2YwOSIsImlhdCI6MTcxMzczMDA5MSwiZXhwIjoxNzE2MzIyMDkxfQ.Jod93Qc-FJJK283BImYXAkLIkR3vT2cktJj5bU62b9Y")
+    @POST("addnote")
+    suspend fun addNote(@Body reqBody: NoteInfo): Note
 }
 
 object GoldenBackend {

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goldennotesdroid.adapter.NotesAdapter
 import com.example.goldennotesdroid.data.DataSource
@@ -50,6 +51,11 @@ class NotesFragment : Fragment() {
         binding.recyclerView.adapter = NotesAdapter()
         binding.recyclerView.setHasFixedSize(true)
         binding.viewModel = viewModel
+
+        binding.newNoteFab.setOnClickListener { view ->
+            view.findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToEditNoteFragment("", null, ""))
+        }
+
         return binding.root
     }
 

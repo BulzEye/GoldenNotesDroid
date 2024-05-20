@@ -28,7 +28,8 @@
             android:defaultValue="@null" />
         <argument
             android:name="_id"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_editNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment"

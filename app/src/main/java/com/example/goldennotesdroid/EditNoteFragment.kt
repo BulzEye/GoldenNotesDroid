@@ -38,6 +38,8 @@ class EditNoteFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.submitNoteButton.setOnClickListener {
+            Log.i("GoldenNotes", "Submit button clicked")
+            Log.i("GoldenNotes", viewModel.toString())
             viewModel.submitData(requireContext())
             viewModel.submitStatus.observe(viewLifecycleOwner) {
                 if(it == EditNoteApiStatus.SUCCESS) {
